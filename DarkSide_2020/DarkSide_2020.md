@@ -1,6 +1,7 @@
 # Overview
 
-- PE32
+- PE32 EXE
+- Microsoft Visual C++
 
 ![alt text](image-2.png)
 
@@ -20,3 +21,18 @@
 
 ![alt text](image-1.png)
 
+- For each DLL to be loaded, there is a hash function that is applied to the DLL name, and the 4-byte result is compared to hardcoded values. For example, the following value corresponds to kernel32.dll
+
+![alt text](image-5.png)
+
+- The process retrieves the address of multiple export functions based on similar hash values computed using the same algorithm
+
+- We can identify from the decrypted strings the processes aimed for termination, the ransom note and some c2 address as well : baroquetes[.]com
+
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
+- The following files will be ignored by the ransomware like autorun, recyclebin
+
+![alt text](image-8.png)
