@@ -1,8 +1,10 @@
 # Overview
 
+BlackCat / ALPHV (Nov 2021,3d7cf20ca6476e14e0a026f9bdd8ff1f26995cdc5854c3adb41a6135ef11ba83 (SHA-256) is a Rust-based PE32 ransomware that refuses to execute without a mandatory 32-byte --access-token, acting as an anti-analysis gate. Once detonated, it self-elevates privileges, enumerates local and SMB/NetBIOS network shares, kills file-locking processes, deletes shadow copies, and encrypts files using AES-128-CTR with per-file keys wrapped under embedded RSA-2048, appending a per-build extension (.sykffle in this sample). Ransom notes are dropped as .txt and .png, and the desktop wallpaper is replaced.
+
 - PE32 EXE
 - Rust programming language
-
+  
 ![alt text](image.png)
 
 - We can see Rust libraries being referenced
