@@ -1,5 +1,7 @@
 # Overview
 
+Cryzip (2006, 0b3a49b3172fc65db607fcb1b8029820ec11c5b6 (SHA1)) is a 32-bit DLL written in MS Visual C++ 6.0 that exports a single function, ZippoCrypt, and uses the legitimate Chilkat ZIP library with a hardcoded password to "encrypt" files. It creates a mutex _zippo_crypter_v1.0_, scans for target file extensions, compresses each file into a password-protected _CRYPT_.ZIP, overwrites the original with the string "Erased by Zippo! GO OUT!!!", and deletes it. A ransom note (AUTO_ZIP_REPORT.TXT) is dropped demanding payment to an e-gold account. 
+
 - Compiler stamp 2006 year
 - PE file 32 bit DLL
 
