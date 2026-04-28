@@ -1,5 +1,7 @@
 # Overview
 
+MedusaLocker (2019, dde3c98b6a370fb8d1785f3134a76cb465cd663db20dffe011da57a4de37aa95 (SHA-256)) is a Microsoft Visual C/C++ compiled PE32 executable, largely unpacked with readable strings and imports. The main routine first checks a GUID-based mutex to prevent re-execution, then performs a privilege check (logging whether it runs as ADMIN or USER) and proceeds to execute a sequential chain of anti-recovery commands: shadow copy deletion, disabling Windows recovery, and clearing system backups. It stops and restarts the LanmanWorkstation service to refresh network connectivity for share-based propagation and modifies the registry to set EnableLinkedConnections, allowing it to reach drives mapped under elevated tokens. For persistence, it writes its installation directory to HKLM\SOFTWARE\Medusa (REG_SZ value Name) and creates a scheduled task named svchostt via the COM Task Scheduler interface to re-launch itself. Files are encrypted and appended with the .encrypted extension, and a ransom note is dropped. 
+
 - PE32 EXE
 - Microsoft Visual C/C++
 
