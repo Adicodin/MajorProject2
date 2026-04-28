@@ -1,5 +1,7 @@
 # Overview
 
+WannaCry (2017,24d004a104d4d54034dbcffc2a4b19a11f39008a575aa614ea04703480b1022c (SHA-256)) is a 32-bit PE executable functioning as both ransomware and a self-propagating worm. On execution, it first attempts to resolve a hardcoded killswitch domain — if the domain resolves successfully, the malware exits, which is why it remained dormant in the analysis environment until INetSim/FakeNet was disabled. Once the killswitch check fails, the dropper runs in dual mode: when launched without arguments it installs and starts the mssecsvc2.0 service for SMB-based propagation (scanning port 445 on local and external networks to exploit EternalBlue), and concurrently writes its embedded resource 1831 to C:\Windows\tasksche.exe, registering it as a service launched with the /i argument. The dropped tasksche.exe generates a pseudo-random installation folder name based on the computer name, copies itself into a hidden directory inside ProgramData, sets a Registry Run key for persistence, and unzips an embedded password-protected resource (2058 XIA) containing the ransom note files (r.wnry, b.wnry/b.bmp, c.wnry for Tor configuration), language packs, and supporting executables. Encryption is multi-threaded across enumerated drives, hardcoded Bitcoin addresses are embedded for ransom payment, and the desktop wallpaper is replaced with the ransom message. 
+
 - PE file 32 bit EXE
 - Sample compiler 2017
 
