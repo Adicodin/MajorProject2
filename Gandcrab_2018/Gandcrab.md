@@ -1,5 +1,7 @@
 # Overview
 
+GandCrab (2018, ab0819ae61ecbaa87d893aa239dc82d971cfcce2d44b5bebb4c45e66bb32ec51 (SHA-256)) is a Visual C/C++ compiled PE32 executable analysed in its unpacked form. On execution, it terminates a hardcoded list of business-critical processes (SQL Server, Oracle, Office suite, Outlook, Thunderbird, Steam, etc.) to release file handles before encryption, then enumerates AV processes for awareness. It collects victim system information (username, keyboard layout, locale) and contacts ipv4bot[.]whatismyipaddress[.]com to retrieve the public IP. C2 communication relies on the .bit namespace (Namecoin-based, resolved via recursive DNS lookups against gandcrab[.]bit) — encryption only proceeds after this domain resolves successfully, acting as a built-in execution gate. Files are encrypted using RSA, with per-victim public/private key material exchanged with the C2. Only Fixed, Remote, and RAMDISK drive types are targeted; the binary self-deletes after encryption and drops a ransom note.
+
 - PE32 EXE File Unpacked version analysing.
 - Visual Studio Compiled C/C++
 
