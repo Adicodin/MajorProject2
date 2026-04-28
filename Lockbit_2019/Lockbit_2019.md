@@ -1,5 +1,7 @@
 # Overview
 
+LockBit (2019,0a937d4fe8aa6cb947b95841c490d73e452a3cafcd92645afc353006786aba76 (SHA-256)) is a Visual C/C++ compiled PE32 executable, lightly obfuscated rather than packed. It performs anti-debugging via the NtGlobalFlag check in the PEB (offset 0x68) and attempts privilege escalation by impersonating the logged-on console user's primary access token using WTSQueryUserToken, DuplicateTokenEx, and CreateProcessAsUserW; if not running as admin, it bypasses UAC using auto-elevating COM objects and masquerades by injecting into explorer.exe. The malware generates an RSA session key pair, encrypts the private key with a hardcoded public key, and stores both halves under HKLM\SOFTWARE\LockBit\full and \Public. It terminates a hardcoded process and service list, creates a mutex, establishes persistence via a Run key, sets a shutdown block reason to prevent interruption mid-encryption, and enumerates fixed and network drives for targets. Post-encryption, it deletes shadow copies, the backup catalog, disables Windows recovery, clears event logs, and self-deletes via a ping-delayed fsutil+del chain that zero-overwrites the binary before removal. 
+
 - PE32 EXE File Unpacked version analysing.
 - Visual Studio Compiled C/C++
 
