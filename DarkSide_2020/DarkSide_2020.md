@@ -1,5 +1,7 @@
 # Overview
 
+DarkSide (2020, 0A0C225F0E5EE941A79F2B7701F1285E4975A2859EB4D025D96D9E366E81ABB9 (SHA-256)) is a packed/obfuscated PE32 executable written in Microsoft Visual C++, exhibiting high entropy and minimal visible strings or imports. It uses a two-stage cryptographic routine — expanding a hardcoded 16-byte pattern into a 128-byte array via a custom shuffle, then running standard RC4 KSA on a 256-byte S-box with an attacker-supplied key — to decrypt its embedded configuration containing C2 servers (e.g., baroquetes[.]com), kill-list processes, ransom note text, and ignore-list paths (autorun, RecycleBin, etc.). API resolution is performed dynamically using a hash-based lookup against DLL and function names (e.g., a fixed 4-byte hash for kernel32.dll) to evade static analysis.
+
 - PE32 EXE
 - Microsoft Visual C++
 
